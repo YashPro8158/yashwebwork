@@ -1,434 +1,757 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="h-full">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Yash Bhola Portfolio| Web Developer in Delhi | Frontend Developer">
-    <meta name="author" content="Devcrud">
-    <title>YashBhola| Frontend Developer</title>
-    <!-- font icons -->
-    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
-    <!-- Bootstrap + Yash main styles -->
-    <link rel="stylesheet" href="assets/css/yashbhola.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Stack Developer Portfolio</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    .portfolio-wrapper {
+      width: 100%;
+      min-height: 100%;
+      overflow-y: auto;
+    }
+
+    .skill-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-link {
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #3b82f6;
+    }
+
+    .btn-primary {
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #3b82f6;
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 1.5rem;
+      width: 2px;
+      height: calc(100% + 1rem);
+      background: #e5e7eb;
+    }
+
+    .timeline-item:last-child::after {
+      display: none;
+    }
+
+    .navbar-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+
+    .flex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+.toggle{
+        display: none;
+      }
+
+
+    @media (max-width: 768px) {
+      .timeline-item {
+        padding-left: 2rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      h1 {
+        font-size: 2.5rem !important;
+      }
+
+      h2 {
+        font-size: 2rem !important;
+      }
+
+      .flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .nav-links {
+        top: 80%;
+        width: 100%;
+        position: absolute;
+        background: white;
+        flex-direction: column;
+        padding-bottom: 30px;
+        opacity: 0;
+      }
+      .navtoggle{
+        opacity: 1;
+      }
+      .toggle{
+        display: block;
+      }
+    }
+  </style>
+  <style>
+    @view-transition {
+      navigation: auto;
+    }
+  </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
 </head>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
-
-    <!-- Page Navbar -->
-    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
-        <div class="container">
-            <a class="logo" href="#">Yash Bhola</a>
-            <ul class="nav">
-                <li class="item">
-                    <a class="link" href="#home" class="btn btn-primary">Home</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#about">About</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#portfolio">Portfolio</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#testmonial">Testmonial</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#contact">Contact</a>
-                </li>
-            </ul>
-            <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
-                <div class="hamburger-box">
-                    <div class="hamburger-inner"></div>
-                </div>
-            </a>
+<body class="h-full">
+  <div class="portfolio-wrapper"><!-- Navigation -->
+    <nav class="navbar-sticky">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem;">
+        <div class="topnav" style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="font-size: 1.5rem; font-weight: 700; color: #1f2937;" id="nav-name">
+            Yash Bhola
+          </div>
+          <div class="nav-links" id="nav-links" style="display: flex; gap: 2rem; align-items: center;"><a href="#about"
+              class="nav-link" style="color: #4b5563; text-decoration: none; font-weight: 500;">About</a> <a
+              href="#skills" class="nav-link"
+              style="color: #4b5563; text-decoration: none; font-weight: 500;">Skills</a> <a href="#projects"
+              class="nav-link" style="color: #4b5563; text-decoration: none; font-weight: 500;">Projects</a> <a
+              href="#experience" class="nav-link"
+              style="color: #4b5563; text-decoration: none; font-weight: 500;">Experience</a> <a href="#contact"
+              class="btn-primary"
+              style="background: #3b82f6; color: white; padding: 0.625rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: 500;">Contact</a>
+          </div>
+<div class="toggle"  >
+  <span id="togglebtn" class="material-symbols-outlined" style="font-size: 2em;">
+menu
+</span>
+  </div>
         </div>
-    </nav><!-- End of Page Navbar -->
-
-    <!-- page header -->
-    <header id="home" class="header">
-        <div class="overlay"></div>
-        <div class="header-content container">
-            <h1 class="header-title">
-                <span class="up">HI!</span>
-                <span class="down">I am Yash Bhola</span>
-            </h1>
-            <p class="header-subtitle">FRONTEND WEB DESIGNER</p>
-
-            <button class="btn btn-primary">Visit My Works</button>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="flex"
+      style="background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%); padding: 6rem 1.5rem; text-align: center;">
+      <div class="heroimage">
+        <img src="herobanner.png" alt="hero image">
+      </div>
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h1 id="hero-name" style="font-size: 3.5rem; font-weight: 800; color: #1f2937; margin-bottom: 1rem;">Yash Bhola
+        </h1>
+        <h2 style="font-size: 1.875rem; font-weight: 600; color: #3b82f6; margin-bottom: 1.5rem;">Full Stack Web
+          Developer</h2>
+        <p id="hero-tagline" style="font-size: 1.25rem; color: #6b7280; max-width: 600px; margin: 0 auto 2.5rem;">
+          Building elegant web solutions with modern technologies and clean, maintainable code</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"><a href="#projects"
+            class="btn-primary"
+            style="background: #3b82f6; color: white; padding: 0.875rem 2rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; font-size: 1.125rem;">View
+            Projects</a> <button id="download-resume" class="btn-primary"
+            style="background: #10b981; color: white; padding: 0.875rem 2rem; border-radius: 0.5rem; border: none; font-weight: 600; font-size: 1.125rem; cursor: pointer;">Download
+            Resume</button> <a href="#contact"
+            style="background: white; color: #3b82f6; padding: 0.875rem 2rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; font-size: 1.125rem; border: 2px solid #3b82f6; transition: all 0.3s ease;">Contact
+            Me</a>
         </div>
-    </header><!-- end of page header -->
-
-    <!-- about section -->
-    <section class="section pt-0" id="about">
-        <!-- container -->
-        <div class="container text-center">
-            <!-- about wrapper -->
-            <div class="about">
-                <div class="about-img-holder">
-                    <img src="assets/imgs/professional.png" class="about-img"
-                        alt="img">
-                </div>
-                <div class="about-caption">
-                    <p class="section-subtitle">Who Am I ?</p>
-                    <h2 class="section-title mb-3">About Me</h2>
-                    <p>
-                        Yash is a highly skilled and versatile full-stack developer, known for his proficiency in both
-                        front-end and back-end technologies. With a keen eye for detail and a passion for creating
-                        seamless
-                        user experiences, Yash brings a unique blend of creativity and technical expertise to every
-                        project
-                        he undertakes.
-                        <br>
-                        On the front-end, Yash excels in crafting intuitive and visually appealing user interfaces. He
-                        is
-                        well-versed in HTML, CSS, and JavaScript, and has a knack for turning design concepts into
-                        responsive and dynamic web applications. Yash's commitment to staying abreast of the latest
-                        trends
-                        in front-end development ensures that his projects are not only functional but also on the
-                        cutting
-                        edge of user interface design.
-                    </p>
-                    <a class="btn-rounded btn btn-outline-primary mt-4" href="frontend-developer.pdf" download="">Download CV</a>
-                </div>
-            </div><!-- end of about wrapper -->
-        </div><!-- end of container -->
-    </section> <!-- end of about section -->
-
-    <!-- service section -->
-    <section class="section" id="service">
-        <div class="container text-center">
-            <p class="section-subtitle">What I Do ?</p>
-            <h6 class="section-title mb-6">Service</h6>
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/pencil-case.svg"
-                                alt="img"
-                                class="icon">
-                            <h6 class="title">UI/UX Design Services</h6>
-                            <p class="subtitle">I offer exceptional UI/UX design services, blending creativity with
-                                functionality.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/responsive.svg"
-                                alt="img"
-                                class="icon">
-                            <h6 class="title">Responsive website</h6>
-                            <p class="subtitle">I create visually appealing and accessible websites that adapt to
-                                different
-                                screen sizes and resolutions.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/toolbox.svg"
-                                alt="img"
-                                class="icon">
-                            <h6 class="title">CMS Integration</h6>
-                            <p class="subtitle">I streamline website management, empowering clients to easily maintain
-                                their content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/analytics.svg"
-                                alt="img"
-                                class="icon">
-                            <h6 class="title">SEO Service</h6>
-                            <p class="subtitle">Ranking the Website on the top google page</p>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- end of row -->
+      </div>
+    </section><!-- About Section -->
+    <section class="flex" id="about" style="padding: 5rem 1.5rem; background: white;">
+      <div class="leftimage">
+        <div class="aboutimg">
+          <img src="yashbhola-1.png" alt="about image">
         </div>
-    </section><!-- end of service section -->
-
-    <!-- portfolio section -->
-    <section class="section" id="portfolio">
-        <div class="container text-center">
-            <p class="section-subtitle">What I Did ?</p>
-            <h6 class="section-title mb-6">Portfolio</h6>
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-4">
-                    <a href="#" class="portfolio-card">
-                        <img src="assets/imgs/folio-1.jpg" class="portfolio-card-img"
-                            alt="img">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Web Designing</h5>
-                                    <p class="font-weight-normal"> YBEC E-Commerce</p>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="#" class="portfolio-card">
-                        <img class="portfolio-card-img" src="assets/imgs/folio-2.jpg" class="img-responsive rounded"
-                            alt="img">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Web Designing</h5>
-                                    <p class="font-weight-normal"> Shooz Point</p>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="#" class="portfolio-card">
-                        <img class="portfolio-card-img" src="assets/imgs/folio-3.jpg" class="img-responsive rounded"
-                            alt="img">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Web Designing</h5>
-                                    <p class="font-weight-normal"> Yk Tech Products</p>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="#" class="portfolio-card">
-                        <img class="portfolio-card-img" src="assets/imgs/folio-4.jpg" class="img-responsive rounded"
-                            alt="img">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Web Designing</h5>
-                                    <p class="font-weight-normal"> Loan Consultant</p>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="#" class="portfolio-card">
-                        <img class="portfolio-card-img" src="assets/imgs/folio-5.jpg" class="img-responsive rounded"
-                            alt="img">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Web Designing</h5>
-                                    <p class="font-weight-normal"> Sikar Fashion</p>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-
-                <div class="col-md-4">
-                    <a href="#" class="portfolio-card">
-                        <img class="portfolio-card-img" src="assets/imgs/folio-6.jpg" class="img-responsive rounded"
-                            alt="img">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Web Designing</h5>
-                                    <p class="font-weight-normal"> Hulk My Dog</p>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-
-
-            </div><!-- end of row -->
-        </div><!-- end of container -->
-    </section> <!-- end of portfolio section -->
-
-    <!-- pricing section -->
-    <section class="section" id="pricing">
-        <div class="container text-center">
-            <p class="section-subtitle">How Much I Charge ?</p>
-            <h6 class="section-title mb-6">My Pricing</h6>
-            <!-- row -->
-            <div class="pricing-wrapper">
-                <div class="pricing-card">
-                    <div class="pricing-card-header">
-                        <img class="pricing-card-icon" src="assets/imgs/scooter.svg"
-                            alt="img">
-                    </div>
-                    <div class="pricing-card-body">
-                        <h6 class="pricing-card-title">Single</h6>
-                        <div class="pricing-card-list">
-                            <p>1 Landing Page</p>
-                            <p>1 Logo </p>
-                            <p>Mobile Compatible</p>
-                            <p>1 year Domain + hosting</p>
-                            <p>Language Converter</p>
-                            <p><i class="ti-close"></i></p>
-                            <p><i class="ti-close"></i></p>
-                            <p><i class="ti-close"></i></p>
-                            <p><i class="ti-close"></i></p>
-                        </div>
-                    </div>
-                    <div class="pricing-card-footer">
-                        <span>Rs</span>
-                        <span> 8k/year</span>
-                    </div>
-                    <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Enquire Now</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-card-header">
-                        <img class="pricing-card-icon" src="assets/imgs/shipped.svg"
-                            alt="img">
-                    </div>
-                    <div class="pricing-card-body">
-                        <h6 class="pricing-card-title">Business</h6>
-                        <div class="pricing-card-list">
-                            <p>Upto 5 Pages</p>
-                            <p>1 Logo </p>
-                            <p>Mobile Compatible</p>
-                            <p>1 year domain + hosting</p>
-                            <p>Language Converter</p>
-                            <p>Image Gallery</p>
-                            <p>Seo (Search Enginer Optimization)</p>
-                            <p><i class="ti-close"></i></p>
-                            <p><i class="ti-close"></i></p>
-                        </div>
-                    </div>
-                    <div class="pricing-card-footer">
-                        <span>Rs</span>
-                        <span> 23k/year</span>
-                    </div>
-                    <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Enquire Now</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-card-header">
-                        <img class="pricing-card-icon" src="assets/imgs/startup.svg"
-                            alt="img">
-                    </div>
-                    <div class="pricing-card-body">
-                        <h6 class="pricing-card-title">Premium</h6>
-                        <div class="pricing-card-list">
-                            <p></p>
-                            <p>Upto 15 Pages</p>
-                            <p>1 Logo </p>
-                            <p>Mobile Compatible</p>
-                            <p>1 year domain + hosting</p>
-                            <p>Language Converter</p>
-                            <p>Image Gallery</p>
-                            <p>Seo (Search Enginer Optimization)</p>
-                            <p>Smo (Social Media Optimization)</p>
-                            <p>50 Post</p>
-                        </div>
-                    </div>
-                    <div class="pricing-card-footer">
-                        <span>Rs </span>
-                        <span>35k/Year</span>
-                    </div>
-                    <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Enquire Now</a>
-                </div>
-
-            </div><!-- end of pricing wrapper -->
-        </div> <!-- end of container -->
-    </section><!-- end of pricing section -->
-
-    <!-- section -->
-    <section class="section-sm bg-primary">
-        <!-- container -->
-        <div class="container text-center text-sm-left">
-            <!-- row -->
-            <div class="row align-items-center">
-                <div class="col-sm offset-md-1 mb-4 mb-md-0">
-                    <h6 class="title text-light">Want to work with me?</h6>
-                    <p class="m-0 text-light">Always feel Free to Contact & Hire me</p>
-                </div>
-                <div class="col-sm offset-sm-2 offset-md-3">
-                    <button class="btn btn-lg my-font btn-light rounded">Hire Me</button>
-                </div>
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </section> <!-- end of section -->
-
-    <!-- testimonial section -->
-    <section class="section" id="testmonial">
-        <div class="container text-center">
-            <p class="section-subtitle">What Think Client About Me ?</p>
-            <h6 class="section-title mb-6">Testmonial</h6>
-
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-card-img-holder">
-                            <img src="assets/imgs/avatar2.jpg" class="testimonial-card-img"
-                                alt="img">
-                        </div>
-                        <div class="testimonial-card-body">
-                            <p class="testimonial-card-subtitle">Yash is an amazing web developer. He's great at making websites look awesome and work perfectly. He pays close attention to detail and always makes sure his clients are happy. If you need a talented web developer, Yash is the one to go to!</p>
-                            <h6 class="testimonial-card-title">Muskan Gupta</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-card-img-holder">
-                            <img src="assets/imgs/avatar3.jpg" class="testimonial-card-img"
-                                alt="img">
-                        </div>
-                        <div class="testimonial-card-body">
-                            <p class="testimonial-card-subtitle">Yash's expertise in web development truly stands out. He has a knack for turning complex concepts into elegant and functional websites. With his attention to detail and creative approach, Yash not only meets but exceeds expectations. </p>
-                            <h6 class="testimonial-card-title">Joseph</h6>
-                        </div>
-                    </div>
-                </div>
-
-        </div> <!-- end of container -->
-    </section> <!-- end of testimonial section -->
-
-       <!-- contact section -->
-    <section class="section" id="contact">
-        <div class="container text-center">
-            <p class="section-subtitle">How can you communicate?</p>
-            <h6 class="section-title mb-5">Contact Me</h6>
-            <!-- contact form -->
-            <form id="contactForm" class="contact-form col-md-10 col-lg-8 m-auto">
-                <div class="form-row">
-                    <div class="form-group col-sm-6">
-                        <input type="text" size="50" class="form-control" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <input type="email" class="form-control" placeholder="Enter Email" requried>
-                    </div>
-                    <div class="form-group col-sm-12">
-                        <textarea name="comment" id="comment" rows="6" class="form-control"
-                            placeholder="Write Something"></textarea>
-                    </div>
-                    <div class="form-group col-sm-12 mt-3">
-                        <input type="submit" value="Send Message" class="btn btn-outline-primary rounded">
-                    </div>
-                </div>
-            </form><!-- end of contact form -->
-        </div><!-- end of container -->
-    </section><!-- end of contact section -->
-
-    <!-- footer -->
-    <div class="container">
-        <footer class="footer">
-            <p class="mb-0">Copyright
-                <script>document.write(new Date().getFullYear())</script> &copy; <a
-                    href="#">YashBhola</a>
-            </p>
-            <div class="social-links text-right m-auto ml-sm-auto">
-                <a href="https://www.facebook.com/yashbhola.yash" class="link"><i class="ti-facebook"></i></a>
-                <a href="https://twitter.com/coder02114303" class="link"><i class="ti-twitter-alt"></i></a>
-                <a href="https://github.com/YashPro8158" class="link"><i class="ti-github"></i></a>
-                <a href="https://www.instagram.com/yash.bhola28" class="link"><i class="ti-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/yash-bhola/" class="link"><i class="ti-linkedin"></i></a>
+      </div>
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; color: #1f2937; text-align: center; margin-bottom: 3rem;">About
+          Me</h2>
+        <div
+          style="max-width: 800px; margin: 0 auto; background: #f9fafb; padding: 2.5rem; border-radius: 1rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
+          <p id="about-text" style="font-size: 1.125rem; color: #4b5563; line-height: 1.8; margin-bottom: 1.5rem;">I'm a
+            passionate full stack web developer with a love for creating beautiful, functional, and user-friendly web
+            applications. With expertise in both frontend and backend technologies, I bring ideas to life through clean,
+            efficient code.</p>
+          <p style="font-size: 1.125rem; color: #4b5563; line-height: 1.8;">I'm dedicated to continuous learning and
+            staying current with the latest web technologies. My goal is to build solutions that not only meet technical
+            requirements but also deliver exceptional user experiences.</p>
+        </div>
+      </div>
+    </section><!-- Skills Section -->
+    <section id="skills" style="padding: 5rem 1.5rem; background: #f9fafb;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; color: #1f2937; text-align: center; margin-bottom: 3rem;">Skills
+          &amp; Technologies</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+          <!-- Frontend -->
+          <div class="skill-card"
+            style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
+            <div
+              style="width: 3.5rem; height: 3.5rem; background: #3b82f6; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+              <span style="font-size: 1.75rem; color: white;">🎨</span>
             </div>
-        </footer>
-    </div> <!-- end of page footer -->
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">Frontend</h3>
+            <ul style="list-style: none; color: #6b7280; font-size: 1.125rem; line-height: 2;">
+              <li>✓ HTML5 &amp; CSS3</li>
+              <li>✓ JavaScript (ES6+)</li>
+              <li>✓ React.js</li>
+              <li>✓ Tailwind CSS</li>
+            </ul>
+          </div><!-- Backend -->
+          <div class="skill-card"
+            style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
+            <div
+              style="width: 3.5rem; height: 3.5rem; background: #10b981; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+              <span style="font-size: 1.75rem; color: white;">⚙️</span>
+            </div>
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">Backend</h3>
+            <ul style="list-style: none; color: #6b7280; font-size: 1.125rem; line-height: 2;">
+              <li>✓ Node.js</li>
+              <li>✓ Express.js</li>
+              <li>✓ REST APIs</li>
+              <li>✓ Authentication</li>
+            </ul>
+          </div><!-- Database & Tools -->
+          <div class="skill-card"
+            style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
+            <div
+              style="width: 3.5rem; height: 3.5rem; background: #8b5cf6; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+              <span style="font-size: 1.75rem; color: white;">🛠️</span>
+            </div>
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">Database &amp; Tools
+            </h3>
+            <ul style="list-style: none; color: #6b7280; font-size: 1.125rem; line-height: 2;">
+              <li>✓ MongoDB</li>
+              <li>✓ Git &amp; GitHub</li>
+              <li>✓ VS Code</li>
+              <li>✓ Postman</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section><!-- Projects Section -->
+    <section id="projects" style="padding: 5rem 1.5rem; background: white;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; color: #1f2937; text-align: center; margin-bottom: 3rem;">
+          Featured Projects</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+          <!-- Project 1 -->
+          <div class="project-card"
+            style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); border: 1px solid #e5e7eb;">
+            <div style="height: 180px; display: flex; align-items: center; justify-content: center;">
+              <img src="shoozpoint.PNG" alt="ecommerce-website">
+            </div>
+            <div style="padding: 2rem;">
+              <h3 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">E-Commerce
+                ShoozPoint</h3>
+              <p style="color: #6b7280; margin-bottom: 1.5rem; line-height: 1.6;">Full-featured online store with
+                shopping cart, user authentication, and payment integration.</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;"><span
+                  style="background: #dbeafe; color: #1e40af; padding: 0.375rem 0.75rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500;">React</span>
+                <span
+                  style="background: #d1fae5; color: #065f46; padding: 0.375rem 0.75rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500;">Node.js</span>
+                <span
+                  style="background: #e0e7ff; color: #4338ca; padding: 0.375rem 0.75rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500;">MongoDB</span>
+              </div>
+              <div style="display: flex; gap: 1rem;"><a href="https://shoozpoint.netlify.app/" target="_blank"
+                  rel="noopener noreferrer"
+                  style="flex: 1; text-align: center; background: #3b82f6; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 500; transition: all 0.3s ease;">Live
+                  Demo</a>
+              </div>
+            </div>
+          </div><!-- Project 2 -->
+          <div class="project-card"
+            style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); border: 1px solid #e5e7eb;">
+            <div style="height: 180px; display: flex; align-items: center; justify-content: center;">
+              <img src="loan-web.jpg" alt="loan-website">
+            </div>
+            <div style="padding: 2rem;">
+              <h3 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">Loan Consultant web
+              </h3>
+              <p style="color: #6b7280; margin-bottom: 1.5rem; line-height: 1.6;">Smart loan advisory system that helps
+                users compare loan options, check eligibility, and apply </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;"><span
+                  style="background: #dbeafe; color: #1e40af; padding: 0.375rem 0.75rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500;">React</span>
+                <span
+                  style="background: #d1fae5; color: #065f46; padding: 0.375rem 0.75rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500;">Express</span>
+                <span
+                  style="background: #fef3c7; color: #92400e; padding: 0.375rem 0.75rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500;">REST
+                  API</span>
+              </div>
+              <div style="display: flex; gap: 1rem;"><a href="https://loanconsultant.netlify.app/" target="_blank"
+                  rel="noopener noreferrer"
+                  style="flex: 1; text-align: center; background: #3b82f6; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 500; transition: all 0.3s ease;">Live
+                  Demo</a>
+              </div>
+            </div>
+          </div><!-- Project 3 -->
+          <div class="project-card"
+            style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); border: 1px solid #e5e7eb;">
+            <div style="height: 180px; display: flex; align-items: center; justify-content: center;">
+              <img src="Credify.PNG" alt="rental website">
+            </div>
+            <div style="padding: 2rem;">
+              <h3 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">Credify-Finance</h3>
+              <p style="color: #6b7280; margin-bottom: 1.5rem; line-height: 1.6;">Advanced loan finance platform with
+                eligibility checks, EMI calculators, and a seamless user experience.</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;"><span
+                  style="background: #fef3c7; color: #92400e; padding: 0.375rem 0.75rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500;">JavaScript</span>
+                <span
+                  style="background: #e0e7ff; color: #4338ca; padding: 0.375rem 0.75rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500;">API
+                  Integration</span> <span
+                  style="background: #dbeafe; color: #1e40af; padding: 0.375rem 0.75rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500;">CSS3</span>
+              </div>
+              <div style="display: flex; gap: 1rem;"><a href="https://credifypyt.online/" target="_blank"
+                  rel="noopener noreferrer"
+                  style="flex: 1; text-align: center; background: #3b82f6; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 500; transition: all 0.3s ease;">Live
+                  Demo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- Experience Section -->
+    <section id="experience" style="padding: 5rem 1.5rem; background: #f9fafb;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; color: #1f2937; text-align: center; margin-bottom: 3rem;">
+          Learning Journey</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+          <div class="timeline-item" style="margin-bottom: 3rem;">
+            <div
+              style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
+              <div
+                style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                <h3 style="font-size: 1.375rem; font-weight: 700; color: #1f2937;">Full Stack Development </h3><span
+                  style="color: #6b7280; font-weight: 500;">2019 - 2020</span>
+              </div>
+              <p style="color: #3b82f6; font-weight: 600; margin-bottom: 1rem;">Cetpa Infotech Pvt Ltd </p>
+              <p style="color: #6b7280; line-height: 1.7;">Intensive 6-month program covering modern web development
+                technologies, including React, Node.js, MongoDB, and best practices in software development.</p>
+            </div>
+          </div>
+          <div class="timeline-item" style="margin-bottom: 3rem;">
+            <div
+              style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
+              <div
+                style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                <h3 style="font-size: 1.375rem; font-weight: 700; color: #1f2937;">Freelance Web Developer</h3><span
+                  style="color: #6b7280; font-weight: 500;">2021-Present</span>
+              </div>
+              <p style="color: #3b82f6; font-weight: 600; margin-bottom: 1rem;">Independent</p>
+              <p style="color: #6b7280; line-height: 1.7;">Building custom web solutions for small businesses and
+                startups. Specialized in responsive design, performance optimization, and modern JavaScript frameworks.
+              </p>
+            </div>
+          </div>
+          <p style="color: #3b82f6; font-weight: 600; margin-bottom: 1rem;">GitHub Community</p>
+          <p style="color: #6b7280; line-height: 1.7;">Active contributor to open-source projects, focusing on React
+            components and documentation improvements. Learning from the community while giving back.</p>
+        </div>
+      </div>
+  </div>
+  </div>
+  </section><!-- Contact Section -->
+  <section id="contact" style="padding: 5rem 1.5rem; background: white;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+      <h2 style="font-size: 2.5rem; font-weight: 700; color: #1f2937; text-align: center; margin-bottom: 1.5rem;">Let's
+        Work Together</h2>
+      <p style="font-size: 1.25rem; color: #6b7280; text-align: center; margin-bottom: 3rem;">I'm currently available
+        for freelance work and open to new opportunities. Let's create something amazing!</p>
+      <div class="contact-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+        <!-- Contact Form -->
+        <div
+          style="background: #f9fafb; padding: 2.5rem; border-radius: 1rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
+          <h3 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 1.5rem;">Send a Message</h3>
+          <form id="contact-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div><label for="name" style="display: block; color: #374151; font-weight: 500; margin-bottom: 0.5rem;">Your
+                Name</label> <input type="text" id="name" name="name" required
+                style="width: 100%; padding: 0.875rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem; transition: border-color 0.3s ease;"
+                placeholder="John Doe">
+            </div>
+            <div><label for="email"
+                style="display: block; color: #374151; font-weight: 500; margin-bottom: 0.5rem;">Your Email</label>
+              <input type="email" id="email" name="email" required
+                style="width: 100%; padding: 0.875rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem; transition: border-color 0.3s ease;"
+                placeholder="john@example.com">
+            </div>
+            <div><label for="message"
+                style="display: block; color: #374151; font-weight: 500; margin-bottom: 0.5rem;">Message</label>
+              <textarea id="message" name="message" required rows="5"
+                style="width: 100%; padding: 0.875rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem; resize: vertical; transition: border-color 0.3s ease;"
+                placeholder="Tell me about your project..."></textarea>
+            </div><button type="submit" class="btn-primary"
+              style="background: #3b82f6; color: white; padding: 1rem; border-radius: 0.5rem; border: none; font-weight: 600; font-size: 1.125rem; cursor: pointer; width: 100%;">Send
+              Message</button>
+            <div id="form-message"
+              style="display: none; padding: 1rem; border-radius: 0.5rem; font-weight: 500; text-align: center;"></div>
+          </form>
+        </div><!-- Contact Info -->
+        <div>
+          <div
+            style="background: #f9fafb; padding: 2.5rem; border-radius: 1rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); margin-bottom: 2rem;">
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 2rem;">Contact Information
+            </h3>
+            <div style="display: flex; flex-direction: column; gap: 1.75rem;">
+              <div style="display: flex; align-items: start; gap: 1rem;">
+                <div
+                  style="width: 3rem; height: 3rem; background: #dbeafe; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <span style="font-size: 1.5rem;">📧</span>
+                </div>
+                <div>
+                  <h4 style="color: #1f2937; font-weight: 600; margin-bottom: 0.25rem;">Email</h4><a id="contact-email"
+                    href="mailto:YashBhola120@gmail.com"
+                    style="color: #3b82f6; text-decoration: none; font-size: 1rem;">Yashbhola120@gmail.com</a>
+                </div>
+              </div>
 
-    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
-    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
-    <script src="assets/js/yashbhola.js"></script>
+              <div style="display: flex; align-items: start; gap: 1rem;">
+                <div
+                  style="width: 3rem; height: 3rem; background: #dbeafe; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <span style="font-size: 1.5rem;">💻</span>
+                </div>
+                <div>
+                  <h4 style="color: #1f2937; font-weight: 600; margin-bottom: 0.25rem;">GitHub</h4><a id="github-link"
+                    href="https://github.com/Yashpro8158" target="_blank" rel="noopener noreferrer"
+                    style="color: #3b82f6; text-decoration: none; font-size: 1rem;">github.com/yashpro8158</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); padding: 2.5rem; border-radius: 1rem; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); text-align: center;">
+            <h3 style="color: white; font-size: 1.375rem; font-weight: 700; margin-bottom: 1rem;">Ready to Start?</h3>
+            <p style="color: #dbeafe; margin-bottom: 1.5rem; line-height: 1.6;">Let's discuss your project and bring
+              your ideas to life with cutting-edge web technologies.</p><a href="mailto:Yashbhola120@gmail.com"
+              style="display: inline-block; background: white; color: #3b82f6; padding: 0.875rem 2rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; transition: transform 0.3s ease, box-shadow 0.3s ease;">Schedule
+              a Call</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- Footer -->
+  <footer style="background: #1f2937; color: white; padding: 3rem 1.5rem;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="footer-grid"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: white;">Yash Bhola</h3>
+          <p style="color: #9ca3af; line-height: 1.6;">Full Stack Web Developer specializing in modern web technologies
+            and creating exceptional digital experiences.</p>
+        </div>
+        <div>
+          <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: white;">Quick Links</h4>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;"><a href="#about"
+              style="color: #9ca3af; text-decoration: none; transition: color 0.3s ease;">About</a> <a href="#skills"
+              style="color: #9ca3af; text-decoration: none; transition: color 0.3s ease;">Skills</a> <a href="#projects"
+              style="color: #9ca3af; text-decoration: none; transition: color 0.3s ease;">Projects</a> <a
+              href="#contact" style="color: #9ca3af; text-decoration: none; transition: color 0.3s ease;">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: white;">Connect</h4>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;"><a href="https://github.com/yashpro8158"
+              target="_blank" rel="noopener noreferrer"
+              style="color: #9ca3af; text-decoration: none; transition: color 0.3s ease;">GitHub</a> <a
+              href="mailto:Yashbhola120@gmail.com"
+              style="color: #9ca3af; text-decoration: none; transition: color 0.3s ease;">Email</a>
+          </div>
+        </div>
+      </div>
+      <div style="border-top: 1px solid #374151; padding-top: 2rem; text-align: center;">
+        <p style="color: #9ca3af; font-size: 0.875rem;">© 2026 Yash Bhola.</p>
+      </div>
+    </div>
+  </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      developer_name: "Yash Bhola",
+      hero_tagline: "Building elegant web solutions with modern technologies and clean, maintainable code",
+      about_bio: "I'm a passionate full stack web developer with a love for creating beautiful, functional, and user-friendly web applications. With expertise in both frontend and backend technologies, I bring ideas to life through clean, efficient code.",
+      contact_email: "YashBhola120@gmail.com",
+      github_profile: "github.com/yashpro8158",
+      linkedin_profile: "linkedin.com/in/YashBhola"
+    };
 
+    async function onConfigChange(config) {
+      const name = config.developer_name || defaultConfig.developer_name;
+      const tagline = config.hero_tagline || defaultConfig.hero_tagline;
+      const bio = config.about_bio || defaultConfig.about_bio;
+      const email = config.contact_email || defaultConfig.contact_email;
+      const github = config.github_profile || defaultConfig.github_profile;
+      const linkedin = config.linkedin_profile || defaultConfig.linkedin_profile;
+
+      document.getElementById('nav-name').textContent = name;
+      document.getElementById('hero-name').textContent = name;
+      document.getElementById('hero-tagline').textContent = tagline;
+      document.getElementById('about-text').textContent = bio;
+
+      const emailElement = document.getElementById('contact-email');
+      emailElement.textContent = email;
+      emailElement.href = `mailto:${email}`;
+
+      const githubElement = document.getElementById('github-link');
+      githubElement.textContent = github;
+      githubElement.href = github.startsWith('http') ? github : `https://${github}`;
+
+      const linkedinElement = document.getElementById('linkedin-link');
+      linkedinElement.textContent = linkedin;
+      linkedinElement.href = linkedin.startsWith('http') ? linkedin : `https://${linkedin}`;
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["developer_name", config.developer_name || defaultConfig.developer_name],
+        ["hero_tagline", config.hero_tagline || defaultConfig.hero_tagline],
+        ["about_bio", config.about_bio || defaultConfig.about_bio],
+        ["contact_email", config.contact_email || defaultConfig.contact_email],
+        ["github_profile", config.github_profile || defaultConfig.github_profile],
+        ["linkedin_profile", config.linkedin_profile || defaultConfig.linkedin_profile]
+      ]);
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Contact form handling
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+
+      // Show loading state
+      submitButton.textContent = 'Sending...';
+      submitButton.disabled = true;
+      submitButton.style.opacity = '0.7';
+
+      // Simulate form submission (in real scenario, this would send to a backend)
+      setTimeout(() => {
+        // Show success message
+        formMessage.style.display = 'block';
+        formMessage.style.background = '#d1fae5';
+        formMessage.style.color = '#065f46';
+        formMessage.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+
+        // Reset form
+        contactForm.reset();
+
+        // Reset button
+        submitButton.textContent = originalButtonText;
+        submitButton.disabled = false;
+        submitButton.style.opacity = '1';
+
+        // Hide message after 5 seconds
+        setTimeout(() => {
+          formMessage.style.display = 'none';
+        }, 5000);
+      }, 1500);
+    });
+
+    // Input focus effects
+    const inputs = document.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('focus', function () {
+        this.style.borderColor = '#3b82f6';
+        this.style.outline = 'none';
+        this.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+      });
+
+      input.addEventListener('blur', function () {
+        this.style.borderColor = '#d1d5db';
+        this.style.boxShadow = 'none';
+      });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+
+
+    // Download Resume functionality
+    const downloadResumeBtn = document.getElementById('download-resume');
+
+    downloadResumeBtn.addEventListener('click', function () {
+      const originalText = this.textContent;
+      this.textContent = 'Preparing...';
+      this.disabled = true;
+
+      setTimeout(() => {
+        // Create a simple PDF-like document with resume content
+        const resumeContent = `
+Yash Bhola
+Full Stack Web Developer
+Email: Yashbhola120@gmail.com
+LinkedIn: linkedin.com/in/YashBhola
+GitHub: github.com/yashpro8158
+
+PROFESSIONAL SUMMARY
+Passionate full stack web developer with expertise in modern web technologies.
+Specialized in creating beautiful, functional, and user-friendly web applications
+with clean, efficient code.
+
+TECHNICAL SKILLS
+Frontend: HTML5, CSS3, JavaScript (ES6+), React.js, Tailwind CSS
+Backend: Node.js, Express.js, REST APIs, Authentication
+Database & Tools: MongoDB, Git, GitHub, VS Code, Postman
+
+EXPERIENCE
+
+Freelance Web Developer | Independent | 2024 - Present
+- Building custom web solutions for small businesses and startups
+- Specialized in responsive design and performance optimization
+- Working with modern JavaScript frameworks
+
+EDUCATION
+
+Full Stack Development | Cetpa Infotech Pvt Ltd  | 2019 - 2021
+- Intensive 6-month program covering modern web development
+- Technologies: React, Node.js, MongoDB
+- Best practices in software development
+
+PROJECTS
+
+E-Commerce Platform
+- Full-featured online store with shopping cart and payment integration
+- Technologies: React, Node.js, MongoDB
+
+Task Management App
+- Collaborative task manager with real-time updates
+- Technologies: React, Express, REST API
+
+Weather Dashboard
+- Real-time weather application with location-based forecasts
+- Technologies: JavaScript, API Integration, CSS3
+`;
+
+        // Create a blob and download
+        const blob = new Blob([resumeContent], { type: 'text/plain' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Yash_Bhola_Resume.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+
+        this.textContent = '✓ Downloaded!';
+        setTimeout(() => {
+          this.textContent = originalText;
+          this.disabled = false;
+        }, 2000);
+      }, 800);
+    });
+    
+let toggle =  document.getElementById("togglebtn");
+let navlink = document.getElementById("nav-links");
+toggle.addEventListener("click", function () {
+    navlink.classList.toggle("navtoggle");
+});
+  </script>
+  <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9b8a4aa3021d45af',t:'MTc2NzUyNTA0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
 </body>
 
 </html>
