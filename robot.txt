@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yashbhola.online/sitemap.xml
