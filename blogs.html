@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogs &amp; Articles - Yash Bhola</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=home" />
+  <style>
+    body {
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    
+    .blog-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    .category-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    
+    .load-more-btn {
+      transition: all 0.3s ease;
+    }
+    
+    .load-more-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(30, 58, 138, 0.2);
+    }
+    
+    .blog-thumbnail {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    /* Loading Animation Styles */
+    .coming-soon-message {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid #e5e7eb;
+      border-top: 4px solid #1e3a8a;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .pulse-text {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div class="w-full h-full overflow-auto bg-white"><!-- Navigation Bar -->
+   <nav class="w-full bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4">
+     <div class="flex items-center justify-between"><!-- Logo --> <a href="https://yashbhola.online/" class="text-2xl font-bold text-gray-900 hover:text-blue-900 transition-colors"> Yash Bhola </a> 
+      <!-- Home Navigation Links -->
+      <div class="flex items-center gap-8"><a href="https://yashbhola.online" rel="noopener noreferrer" class="text-gray-700 hover:text-blue-900 font-medium transition-colors"><span class="material-symbols-outlined">home</span></a>
+      </div>
+     </div>
+    </div>
+   </nav><!-- Header Section -->
+   <section class="w-full bg-gradient-to-b from-gray-50 to-white py-16 px-6">
+    <div class="max-w-6xl mx-auto text-center">
+     <h1 id="page-heading" class="text-5xl font-bold text-gray-900 mb-4">Blogs &amp; Articles</h1>
+     <p id="page-subtitle" class="text-xl text-gray-600 mb-8">Web Development, SEO, Freelancing &amp; Real Project Learnings</p>
+     <div class="w-24 h-1 bg-blue-900 mx-auto"></div>
+    </div>
+   </section><!-- Blog Cards Grid -->
+   <section class="w-full py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Blog Card 1 -->
+      <article class="blog-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100 cursor-pointer">
+       <div class="aspect-video overflow-hidden bg-gray-100">
+       <img src="how-i-build-my-first-portfolio-website.webp" alt="how i build my first portfolio website">
+       </div>
+       <div class="p-6">
+        <div class="flex items-center gap-3 mb-3"><span class="category-tag text-blue-900 bg-blue-50 px-3 py-1 rounded-full">Web Dev</span> <span class="text-sm text-gray-500">Dec 15, 2025</span>
+        </div>
+        <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight">How I Built My First Portfolio Website Using HTML, CSS & JavaScript</h2>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-2">I built my personal portfolio website from scratch using HTML, CSS, and JavaScript.
+In this blog, I explain design choices, features, and deployment process.</p><a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-blue-900 font-semibold hover:text-blue-700 transition-colors"> Read More <span class="ml-2">→</span> </a>
+       </div>
+      </article><!-- Blog Card 2 -->
+      <article class="blog-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100 cursor-pointer">
+       <div class="aspect-video overflow-hidden bg-gray-100">
+       <img src="SEO-Basics-for-Beginners.webp" alt="SEO Basics for Beginners">
+       </div>
+       <div class="p-6">
+        <div class="flex items-center gap-3 mb-3"><span class="category-tag text-blue-900 bg-blue-50 px-3 py-1 rounded-full">SEO</span> <span class="text-sm text-gray-500">Dec 10, 2025</span>
+        </div>
+        <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight">SEO Basics for Beginners: How Google Ranks a Website</h2>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-2">Learn the fundamentals of SEO and understand how Google ranks websites. This beginner-friendly guide explains on-page SEO, keywords, and ranking factors.</p><a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-blue-900 font-semibold hover:text-blue-700 transition-colors"> Read More <span class="ml-2">→</span> </a>
+       </div>
+      </article><!-- Blog Card 3 -->
+      <article class="blog-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100 cursor-pointer">
+       <div class="aspect-video overflow-hidden bg-gray-100">
+       <img src="How-to-Get-Freelance-Web-Development-Clients-as-a-Beginner.webp" alt="How to Get Freelance Web Development Clients as a Beginner">
+       </div>
+       <div class="p-6">
+        <div class="flex items-center gap-3 mb-3"><span class="category-tag text-blue-900 bg-blue-50 px-3 py-1 rounded-full">Freelancing</span> <span class="text-sm text-gray-500">Dec 5, 2025</span>
+        </div>
+        <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight">How to Get Freelance Web Development Clients as a Beginner</h2>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-2">A practical guide for beginners on how to get freelance web development clients. Learn platforms, outreach tips, and real strategies that actually work.</p><a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-blue-900 font-semibold hover:text-blue-700 transition-colors"> Read More <span class="ml-2">→</span> </a>
+       </div>
+      </article>
+     </div><!-- Load More Button -->
+     <div class="flex justify-center mt-12"><button id="load-more-btn" class="load-more-btn bg-blue-900 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-800"> Load More Articles </button>
+     </div><!-- Coming Soon Message (Hidden Initially) -->
+     <div id="coming-soon-container" class="hidden mt-12">
+      <div class="coming-soon-message flex flex-col items-center justify-center py-16 px-6">
+       <div class="spinner mb-6"></div>
+       <h3 class="text-3xl font-bold text-gray-900 mb-3">More Content Coming Soon! ✨</h3>
+       <p class="text-lg text-gray-600 text-center max-w-md pulse-text">We're working on exciting new articles. Stay tuned for more web development, SEO, and freelancing insights!</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="w-full bg-gray-50 py-8 px-6 mt-16">
+    <div class="max-w-6xl mx-auto text-center">
+     <p id="footer-text" class="text-gray-600">© 2026 Yash Bhola | Web Developer &amp; Blogger</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      page_heading: "Blogs & Articles",
+      page_subtitle: "Web Development, SEO, Freelancing & Real Project Learnings",
+      load_more_text: "Load More Articles",
+      footer_text: "© 2026 Yash Bhola | Web Developer & Blogger",
+      background_color: "#ffffff",
+      accent_color: "#1e3a8a",
+      text_color: "#111827",
+      card_background: "#ffffff",
+      button_color: "#1e3a8a"
+    };
+
+    async function onConfigChange(config) {
+      const pageHeading = document.getElementById('page-heading');
+      const pageSubtitle = document.getElementById('page-subtitle');
+      const loadMoreBtn = document.getElementById('load-more-btn');
+      const footerText = document.getElementById('footer-text');
+
+      if (pageHeading) {
+        pageHeading.textContent = config.page_heading || defaultConfig.page_heading;
+        pageHeading.style.color = config.text_color || defaultConfig.text_color;
+      }
+
+      if (pageSubtitle) {
+        pageSubtitle.textContent = config.page_subtitle || defaultConfig.page_subtitle;
+      }
+
+      if (loadMoreBtn) {
+        loadMoreBtn.textContent = config.load_more_text || defaultConfig.load_more_text;
+        loadMoreBtn.style.backgroundColor = config.button_color || defaultConfig.button_color;
+      }
+
+      if (footerText) {
+        footerText.textContent = config.footer_text || defaultConfig.footer_text;
+      }
+
+      document.body.style.backgroundColor = config.background_color || defaultConfig.background_color;
+
+      const cards = document.querySelectorAll('.blog-card');
+      cards.forEach(card => {
+        card.style.backgroundColor = config.card_background || defaultConfig.card_background;
+      });
+
+      const categoryTags = document.querySelectorAll('.category-tag');
+      categoryTags.forEach(tag => {
+        tag.style.color = config.accent_color || defaultConfig.accent_color;
+      });
+
+      const readMoreLinks = document.querySelectorAll('article a');
+      readMoreLinks.forEach(link => {
+        link.style.color = config.accent_color || defaultConfig.accent_color;
+      });
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.card_background || defaultConfig.card_background,
+            set: (value) => {
+              config.card_background = value;
+              window.elementSdk.setConfig({ card_background: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.button_color || defaultConfig.button_color,
+            set: (value) => {
+              config.button_color = value;
+              window.elementSdk.setConfig({ button_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family || 'Inter',
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size || 16,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["page_heading", config.page_heading || defaultConfig.page_heading],
+        ["page_subtitle", config.page_subtitle || defaultConfig.page_subtitle],
+        ["load_more_text", config.load_more_text || defaultConfig.load_more_text],
+        ["footer_text", config.footer_text || defaultConfig.footer_text]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Load More Button Functionality
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    const comingSoonContainer = document.getElementById('coming-soon-container');
+
+    if (loadMoreBtn && comingSoonContainer) {
+      loadMoreBtn.addEventListener('click', function() {
+        // Hide the button
+        loadMoreBtn.style.display = 'none';
+        
+        // Show coming soon message with animation
+        comingSoonContainer.classList.remove('hidden');
+        
+        // Smooth scroll to the message
+        setTimeout(() => {
+          comingSoonContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b9d21d697db5520',t:'MTc2NzcyMjYwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
