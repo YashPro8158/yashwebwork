@@ -439,9 +439,9 @@ menu
         <div
           style="background: #f9fafb; padding: 2.5rem; border-radius: 1rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
           <h3 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 1.5rem;">Send a Message</h3>
-         <form    name="contact"  method="POST"  data-netlify="true" action="/thank-you.html" netlify-honeypot="bot-field"  id="contact-form"   style="display: flex; flex-direction: column; gap: 1.25rem;">
+         <form    name="contact"  method="POST"  data-netlify="true" netlify-honeypot="bot-field"  id="contact-form"   style="display: flex; flex-direction: column; gap: 1.25rem;">
            <input type="hidden" name="form-name" value="contact">
-  <input type="hidden" name="bot-field">
+  <p style="display:none;">  <label>    Don’t fill this out:    <input name="bot-field">  </label></p>
         <div><label for="name" style="display: block; color: #374151; font-weight: 500; margin-bottom: 0.5rem;">Your
                 Name</label> <input type="text" id="name" name="name" required
                 style="width: 100%; padding: 0.875rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem; transition: border-color 0.3s ease;"
@@ -608,57 +608,106 @@ menu
     }
 
     // Contact form handling
-    //const contactForm = document.getElementById('contact-form');
-    //const formMessage = document.getElementById('form-message');
+   //  const contactForm = document.getElementById('contact-form');
+   //  const formMessage = document.getElementById('form-message');
 
-    //contactForm.addEventListener('submit', function (e) {
-     // e.preventDefault();
+   //  contactForm.addEventListener('submit', function (e) {
+   //   e.preventDefault();
 
-      //const submitButton = contactForm.querySelector('button[type="submit"]');
-      //const originalButtonText = submitButton.textContent;
+   //    const submitButton = contactForm.querySelector('button[type="submit"]');
+   //    const originalButtonText = submitButton.textContent;
 
-      // Show loading state
-      //submitButton.textContent = 'Sending...';
-      //submitButton.disabled = true;
-      //submitButton.style.opacity = '0.7';
+   //    Show loading state
+   //    submitButton.textContent = 'Sending...';
+   //    submitButton.disabled = true;
+   //    submitButton.style.opacity = '0.7';
 
-      // Simulate form submission (in real scenario, this would send to a backend)
-      //setTimeout(() => {
-        // Show success message
-       // formMessage.style.display = 'block';
-       // formMessage.style.background = '#d1fae5';
-       // formMessage.style.color = '#065f46';
-       // formMessage.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+   //    Simulate form submission (in real scenario, this would send to a backend)
+   //    setTimeout(() => {
+   //      Show success message
+   //     formMessage.style.display = 'block';
+   //     formMessage.style.background = '#d1fae5';
+   //     formMessage.style.color = '#065f46';
+   //     formMessage.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
 
-        // Reset form
-        //contactForm.reset();
+   //      Reset form
+   //      contactForm.reset();
 
-        // Reset button
-        //submitButton.textContent = originalButtonText;
-       // submitButton.disabled = false;
-       // submitButton.style.opacity = '1';
+   //      Reset button
+   //      submitButton.textContent = originalButtonText;
+   //     submitButton.disabled = false;
+   //     submitButton.style.opacity = '1';
 
-        // Hide message after 5 seconds
-       // setTimeout(() => {
-       //   formMessage.style.display = 'none';
-      //  }, 5000);
-      //}, 1500);
-  //  });
+   //      Hide message after 5 seconds
+   //     setTimeout(() => {
+   //       formMessage.style.display = 'none';
+   //     }, 5000);
+   //    }, 1500);
+   // });
 
-    // Input focus effects
-    const inputs = document.querySelectorAll('input, textarea');
-    inputs.forEach(input => {
-      input.addEventListener('focus', function () {
-        this.style.borderColor = '#3b82f6';
-        this.style.outline = 'none';
-        this.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
-      });
+   //  // Input focus effects
+   //  const inputs = document.querySelectorAll('input, textarea');
+   //  inputs.forEach(input => {
+   //    input.addEventListener('focus', function () {
+   //      this.style.borderColor = '#3b82f6';
+   //      this.style.outline = 'none';
+   //      this.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+   //    });
 
-      input.addEventListener('blur', function () {
-        this.style.borderColor = '#d1d5db';
-        this.style.boxShadow = 'none';
-      });
-    });
+   //    input.addEventListener('blur', function () {
+   //      this.style.borderColor = '#d1d5db';
+   //      this.style.boxShadow = 'none';
+   //    });
+   //  });
+
+    // form submition and send message ui 
+const contactForm = document.getElementById('contact-form');
+const formMessage = document.getElementById('form-message');
+
+contactForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+  const originalText = submitButton.textContent;
+
+  // Loading UI
+  submitButton.textContent = 'Sending...';
+  submitButton.disabled = true;
+  submitButton.style.opacity = '0.7';
+
+  const formData = new FormData(contactForm);
+
+  fetch("/", {
+  method: "POST",
+  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  body: new URLSearchParams(formData).toString()
+})
+  .then(() => {
+    formMessage.style.display = 'block';
+    formMessage.style.background = '#d1fae5';
+    formMessage.style.color = '#065f46';
+    formMessage.textContent =
+      "✓ Message sent successfully! I'll get back to you soon.";
+
+    contactForm.reset();
+  })
+  .catch(() => {
+    formMessage.style.display = 'block';
+    formMessage.style.background = '#fee2e2';
+    formMessage.style.color = '#991b1b';
+    formMessage.textContent = "❌ Something went wrong.";
+  })
+  .finally(() => {
+    submitButton.textContent = originalText;
+    submitButton.disabled = false;
+    submitButton.style.opacity = '1';
+
+    setTimeout(() => {
+      formMessage.style.display = 'none';
+    }, 5000);
+  });
+});
+// form submition and send message ui ends 
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
